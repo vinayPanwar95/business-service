@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+                http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--Added the entity Order-->
+    <changeSet id="create-order-table" author="vinay">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ORDER"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="order">
+            <column name="ID" type="UUID" >
+                <constraints primaryKey="true" nullable="false" primaryKeyName="ORDER_PK" />
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false" />
+            </column>
+
+
+
+
+            <column name="ORDER_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ORDER_VERSION" type="INT">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="ORDER_TYPE" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="ORDER_VALUE" type="INT">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="PAYMENT_MODE" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="COMMENT" type="VARCHAR(3000)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="DELETED" type="BOOLEAN" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ARCHIVING_CODE" type="VARCHAR(20)" defaultValue="NOT_ARCHIVED">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="STATUS" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CREATE_BY" type="VARCHAR(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="MODIFIED_BY" type="VARCHAR(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="CREATION_DATE" type="TIMESTAMP" defaultValueComputed="${db_specific_now}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="LAST_MODIFIED_DATE" type="TIMESTAMP" defaultValueComputed="${db_specific_now}">
+                <constraints nullable="false" />
+            </column>
+
+
+
+
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

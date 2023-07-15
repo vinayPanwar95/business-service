@@ -2,14 +2,11 @@ package com.learning.businessservice.useractions;
 
 import com.learning.businessservice.model.OrderType;
 import com.learning.businessservice.model.PaymentMode;
-import com.learning.commonlbs.useractions.ActionRequest;
+import com.learning.common.useractions.ActionRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
-import org.springframework.beans.factory.ObjectProvider;
-
-import java.util.Optional;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -22,5 +19,7 @@ public class OrderActionRequest extends ActionRequest {
     private PaymentMode paymentMode;
 
 
-
+    public boolean hasSameOrderValue(Integer orderValue) {
+        return this.orderValue.equals(orderValue);
+    }
 }

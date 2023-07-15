@@ -7,7 +7,7 @@ import com.learning.businessservice.useractions.OrderActionRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import static com.learning.commonlbs.validator.OrderValidator.validateNotNUll;
+import static com.learning.common.validator.OrderValidator.validateNotNUll;
 
 @Component
 @RequiredArgsConstructor

@@ -9,8 +9,6 @@ import io.micrometer.core.instrument.logging.LoggingMeterRegistry;
 import io.micrometer.core.instrument.logging.LoggingRegistryConfig;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.actuate.health.HealthEndpoint;
-import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -39,8 +37,7 @@ public class MetricsAutoConfiguration {
      private boolean showAllMeters;
 
      public MetricsAutoConfiguration(MetricsProperties metricsProperties){
-//         this.logPublishIntervalInSeconds = metricsProperties.getLogPublishIntervalInSeconds();
-         this.logPublishIntervalInSeconds = 2;
+         this.logPublishIntervalInSeconds = metricsProperties.getLogPublishIntervalInSeconds();
          String metersWhiteList = metricsProperties.getMeterWhiteList();
          if(metersWhiteList!= null){
              showAllMeters= metersWhiteList.trim().equals(ALL_METER_WILD_CARD);

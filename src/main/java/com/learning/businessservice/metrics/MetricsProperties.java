@@ -7,5 +7,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 public class MetricsProperties {
     private String meterWhiteList;
-//    private int logPublishIntervalInSeconds;
+    private int logPublishIntervalInSeconds;
 }

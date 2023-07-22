@@ -32,5 +32,6 @@ com:
   learning:
     metrics:
       enabled: true
-      log-publish-interval-in-seconds: 1
-      meters-white-list: "health,http.server.requests,kafka.producer.request.latency.max,kafka.producer.request.size.max"
+      logPublishIntervalInSeconds: 5
+#      meters_white_list: "health,http.server.requests,kafka.producer.request.latency.max,kafka.producer.request.size.max"
+      meterWhiteList: "health,http.server.requests"

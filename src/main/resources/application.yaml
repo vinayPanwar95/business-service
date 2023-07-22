@@ -17,3 +17,21 @@ spring:
       enabled: true
       path: /h2-console
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,metrics,info,env"
+  endpoint:
+    health:
+      show-details: "always"
+#    beans:
+#      enabled: true
+
+com:
+  learning:
+    metrics:
+      enabled: true
+      logPublishIntervalInSeconds: 5
+#      meters_white_list: "health,http.server.requests,kafka.producer.request.latency.max,kafka.producer.request.size.max"
+      meterWhiteList: "health,http.server.requests"

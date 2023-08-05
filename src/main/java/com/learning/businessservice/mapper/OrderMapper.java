@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderMapper {
-    public Object toOrderResourceDTO(OrderEntity order) {
+    public OrderResponseDTO toOrderResourceDTO(OrderEntity order) {
 
         return OrderResponseDTO.builder()
                 .orderId(order.getOrderId().toString())

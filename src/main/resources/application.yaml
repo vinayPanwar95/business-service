@@ -1,6 +1,6 @@
 spring:
   application:
-    name: order-service
+    name: orderService
   liquibase:
     change-log: classpath:/db/changelog/db-changelog-master.xml
   datasource:
@@ -16,6 +16,37 @@ spring:
         web-allow-others: true
       enabled: true
       path: /h2-console
+  cloud:
+    function:
+      definition: consumer;producer
+    stream:
+      bindings:
+        producer-out-0:
+          destination: orders
+          producer:
+            userNativeEncoding: false
+        consumer-in-0:
+          destination: orders
+          producer:
+            userNativeEncoding: false
+      kafka:
+        bindings:
+          producer-out-0:
+            producer:
+              record-metadata-channel: "order.metadata"
+              configuration:
+                key.serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+                value.serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+          consumer-out-0:
+            consumer:
+              configuration:
+                key.serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+                value.serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+        binder:
+          brokers: localhost
+          defaultBrokerPort: 9092
+          requiredAcks: all
+          ackEachRecord: true
 
 management:
   endpoints:
@@ -31,7 +62,10 @@ management:
 com:
   learning:
     metrics:
-      enabled: true
-      logPublishIntervalInSeconds: 5
-#      meters_white_list: "health,http.server.requests,kafka.producer.request.latency.max,kafka.producer.request.size.max"
-      meterWhiteList: "health,http.server.requests"
+      enabled: false
+      logPublishIntervalInSeconds: 10
+#      meterWhiteList: "health,http.server.requests,kafka.producer.request.latency.max,kafka.producer.request.size.max"
+      meterWhiteList: "*"
+
+
+

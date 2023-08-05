@@ -4,6 +4,7 @@ import com.learning.businessservice.entity.OrderEntity;
 import com.learning.businessservice.repository.OrderRepository;
 import com.learning.businessservice.useractions.OrderActionRequest;
 import com.learning.common.datetime.DateTimerHelper;
+import com.learning.common.model.OrderStatusCode;
 import com.learning.common.useractions.create.CreateNewService;
 import com.learning.common.uuid.UUIDGenerator;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +41,8 @@ public class CreateNewOrderService extends CreateNewService<OrderActionRequest, 
                 .orderValue(actionRequest.orderValue())
                 .comment(actionRequest.comment())
                 .paymentMode(actionRequest.paymentMode())
+//                        TODO : this status must be set from common service call.
+                        .status(OrderStatusCode.DRAFT)
                 .build();
         order.populateTechnicalFields(actionRequest.contextUser() , dateTimerHelper.getNowInUTCTime() , uuidGenerator.generate());
         return order;

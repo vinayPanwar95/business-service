@@ -1,6 +1,7 @@
 package com.learning.businessservice.mapper;
 
 import com.learning.businessservice.dto.OrderCreateRequestDTO;
+import com.learning.businessservice.dto.OrderResponseDTO;
 import com.learning.businessservice.entity.OrderEntity;
 import com.learning.businessservice.useractions.OrderActionRequest;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class OrderApiMapper {
         return createOrderRequestMapper.toCreateFirstVersionActionRequest(createRequestDTO);
     }
 
-    public Object toOrderResponseDTO(OrderEntity order) {
+    public OrderResponseDTO toOrderResponseDTO(OrderEntity order) {
         return orderMapper.toOrderResourceDTO(order);
     }
 }

@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@ConditionalOnProperty(prefix = "com.learning", name = "enabled" , matchIfMissing = true)
+@ConditionalOnProperty(prefix = "com.learning.metrics", name = "enabled" , matchIfMissing = true)
 @Configuration
 @EnableConfigurationProperties(MetricsProperties.class)
 @Import(HealthMetricsExportConfiguration.class)
